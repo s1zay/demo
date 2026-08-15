@@ -29,20 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         processData(results);
     });
 
-    // 3. User clicks Download
-    ui.onDownload(() => {
-        if (!finalFingerprintData) return;
-        
-        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(finalFingerprintData, null, 2));
-        const anchor = document.createElement('a');
-        anchor.href = dataStr;
-        anchor.download = `se_${Date.now()}.json`;
-        document.body.appendChild(anchor);
-        anchor.click();
-        anchor.remove();
-    });
-
-    // 4. User clicks Start New
+    // 3. User clicks Start New
     ui.onRestart(() => {
         // A hard reload is the cleanest way to reset the engine state entirely
         window.location.reload();
@@ -63,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // C. Recursively round all numbers to exactly 4 decimal places
         fingerprint = deepRoundTo4Decimals(fingerprint);
         
-        // Save for download button
+        // Save for visual JSON block mapping
         finalFingerprintData = fingerprint;
 
         // D. Calculate exactly how large the new fingerprint is
