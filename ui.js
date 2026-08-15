@@ -7,14 +7,18 @@ class UIController {
         this.screenStart = document.getElementById('screen-start');
         this.screenResults = document.getElementById('screen-results');
         
-        // Bottom Sheet
+        // Bottom Sheet & Modals
         this.bottomSheetOverlay = document.getElementById('bottom-sheet-overlay');
+        this.guideModal = document.getElementById('guide-modal');
         
         // Buttons
         this.btnStart = document.getElementById('btn-start');
         this.btnCloseSheet = document.getElementById('btn-close-sheet');
-        this.btnDownload = document.getElementById('btn-download');
         this.btnRestart = document.getElementById('btn-restart');
+        
+        // Guide Modal Buttons
+        this.btnGuideOpen = document.getElementById('btn-guide-open');
+        this.btnGuideClose = document.getElementById('btn-guide-close');
         
         // Output Elements
         this.jsonOutput = document.getElementById('json-output');
@@ -25,6 +29,10 @@ class UIController {
         this.statRawSize = document.getElementById('stat-raw-size');
         this.statFpSize = document.getElementById('stat-fp-size');
         this.statReduction = document.getElementById('stat-reduction');
+
+        // Bind internal modal logic
+        this.btnGuideOpen.addEventListener('click', () => this.openGuide());
+        this.btnGuideClose.addEventListener('click', () => this.closeGuide());
     }
 
     // View Transitions
@@ -34,6 +42,17 @@ class UIController {
 
     closeBottomSheet() {
         this.bottomSheetOverlay.classList.remove('open');
+    }
+
+    openGuide() {
+        this.guideModal.classList.remove('hidden');
+        // Slight delay to allow CSS display transition before applying open class for animation
+        setTimeout(() => this.guideModal.classList.add('open'), 10);
+    }
+
+    closeGuide() {
+        this.guideModal.classList.remove('open');
+        setTimeout(() => this.guideModal.classList.add('hidden'), 400); // Wait for transition
     }
 
     showResults() {
@@ -46,17 +65,13 @@ class UIController {
         this.screenStart.classList.add('active');
     }
 
-    // Event Listeners Registration
+    // Event Listeners Registration (for app.js)
     onStart(callback) {
         this.btnStart.addEventListener('click', callback);
     }
 
     onStop(callback) {
         this.btnCloseSheet.addEventListener('click', callback);
-    }
-
-    onDownload(callback) {
-        this.btnDownload.addEventListener('click', callback);
     }
 
     onRestart(callback) {
@@ -123,4 +138,4 @@ class UIController {
         html += '<div>}</div>';
         return html;
     }
-}
+    }
