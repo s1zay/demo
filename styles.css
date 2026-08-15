@@ -255,3 +255,162 @@ canvas {
 }
 
 .stat-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+.stat-row:last-child {
+    margin-bottom: 0;
+}
+.stat-row.highlight {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 8px;
+}
+.stat-row.muted {
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* ==========================================================================
+   NEW UTILITY CLASSES (DEMO TWEAKS)
+   ========================================================================== */
+
+.btn-small {
+    font-size: 13px;
+    padding: 8px 16px;
+}
+
+.btn-wide {
+    width: 100%;
+    max-width: 250px;
+}
+
+.center-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.guide-trigger-wrapper {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.demo-backlink {
+    color: var(--text-secondary);
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.demo-backlink:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   SHAPE GUIDE MODAL OVERRIDES
+   ========================================================================== */
+.overlay.hidden {
+    display: none;
+}
+
+#guide-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.guide-content {
+    position: relative;
+    height: auto;
+    max-height: 85vh;
+    width: 90%;
+    max-width: 600px;
+    border-radius: var(--radius-lg);
+    transform: translateY(20px) scale(0.95);
+    padding: 0;
+    text-align: left;
+    display: block; 
+    overflow-y: auto;
+}
+
+.overlay.open .guide-content {
+    transform: translateY(0) scale(1);
+}
+
+.guide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--surface);
+    z-index: 10;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.guide-title {
+    font-size: 24px;
+    margin: 0;
+}
+
+.guide-close {
+    position: relative;
+    top: 0; right: 0;
+    transition: background 0.2s ease;
+}
+
+.guide-close:hover {
+    background: #d1d1d6;
+}
+
+.guide-body {
+    padding: 32px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.shape-title {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.shape-steady { color: #10B981; }
+.shape-burst { color: #F59E0B; }
+.shape-drift { color: #3B82F6; }
+.shape-chaotic { color: #EF4444; }
+.shape-flat { color: #8B5CF6; }
+.shape-ambient { color: #6366F1; }
+
+.shape-subtitle {
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.shape-list {
+    padding-left: 24px;
+    margin-bottom: 24px;
+    margin-top: 12px;
+}
+
+.shape-list li {
+    margin-bottom: 8px;
+}
+
+.guide-divider {
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin-bottom: 24px;
+}
