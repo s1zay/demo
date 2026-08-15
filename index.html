@@ -44,6 +44,10 @@
                     <canvas id="chart-canvas"></canvas>
                 </div>
 
+                <div class="guide-trigger-wrapper">
+                    <button id="btn-guide-open" class="btn btn-outline btn-small">What do these shapes mean?</button>
+                </div>
+
                 <div class="stats-card">
                     <div class="stat-row">
                         <span>Total Events Recorded</span>
@@ -63,9 +67,9 @@
                     </div>
                 </div>
 
-                <div class="actions">
-                    <button id="btn-download" class="btn">Download JSON</button>
-                    <button id="btn-restart" class="btn btn-outline">Start New</button>
+                <div class="actions center-actions">
+                    <button id="btn-restart" class="btn btn-outline btn-wide">Start New</button>
+                    <a href="https://shapebeacon.com" class="demo-backlink">shapebeacon.com</a>
                 </div>
             </div>
         </div>
@@ -82,8 +86,89 @@
         </div>
     </div>
 
+    <!-- Shape Guide Modal (NEW) -->
+    <div id="guide-modal" class="overlay hidden">
+        <div class="sheet guide-content">
+            <div class="guide-header">
+                <h2 class="guide-title">Shape Guide</h2>
+                <button id="btn-guide-close" class="btn-close guide-close">✕</button>
+            </div>
+            
+            <div class="guide-body">
+                <!-- Steady -->
+                <h3 class="shape-title shape-steady">Steady</h3>
+                <p class="shape-subtitle">Moderate Intensity, High Rhythm, Low Exploration, High Coherence</p>
+                <p>Methodical, predictable, and focused. The user knows what they are doing and is moving at a comfortable, deliberate pace.</p>
+                <ul class="shape-list">
+                    <li>Reading a long-form article: Scrolling down smoothly, line by line, at a predictable reading pace.</li>
+                    <li>Filing taxes or doing data entry: Moving from text box to text box (clicking or tabbing) with a consistent, rhythmic workflow.</li>
+                    <li>Taking an online quiz: Reading a question, moving the mouse directly to the answer, clicking, and repeating.</li>
+                    <li>Following a step-by-step tutorial: Looking at a guide, executing the step, and scrolling to the next step without hesitation.</li>
+                    <li>Reviewing a contract: Carefully scrolling through a legal document or terms of service to read the fine print before signing.</li>
+                </ul>
+                <hr class="guide-divider">
+
+                <!-- Burst -->
+                <h3 class="shape-title shape-burst">Burst</h3>
+                <p class="shape-subtitle">High Intensity, Low Rhythm, Moderate Exploration, Moderate Coherence</p>
+                <p>Fast-paced, urgent, and sporadic. Bursts of high activity followed by pauses, highly goal-oriented but in a rush.</p>
+                <ul class="shape-list">
+                    <li>Sniping an online auction: Frantically refreshing the page and rushing to click "Bid" in the final 5 seconds.</li>
+                    <li>Clearing out a spam inbox: Rapid-fire clicking on multiple checkboxes, followed by hitting the "Delete" button.</li>
+                    <li>Rage-clicking a broken button: Frustratedly clicking "Submit" five times in a row because the website froze.</li>
+                    <li>Speed-scrolling to find a specific keyword: Whipping the scroll wheel fast to visually scan for a specific headline, stopping abruptly when found.</li>
+                    <li>Rushing a deadline: Copying and pasting information rapidly between tabs with high mouse velocity.</li>
+                </ul>
+                <hr class="guide-divider">
+
+                <!-- Drift -->
+                <h3 class="shape-title shape-drift">Drift</h3>
+                <p class="shape-subtitle">Low/Moderate Intensity, Moderate Rhythm, High Exploration, Moderate Coherence</p>
+                <p>Casual, meandering, and non-committal. The user is browsing without a specific endpoint in mind.</p>
+                <ul class="shape-list">
+                    <li>Window shopping on an e-commerce site: Scrolling casually through a catalog, occasionally hovering over a product image, but not buying anything.</li>
+                    <li>Scrolling social media on the couch: Mindless, thumb-flicking behavior on a phone while half-watching a TV show in the background.</li>
+                    <li>Exploring a map or gallery: Panning around Google Maps or clicking through photos on a real estate listing just to see what's there.</li>
+                    <li>Browsing Netflix for something to watch: Slowly moving the cursor over different movie thumbnails to read the pop-up summaries.</li>
+                    <li>Falling down a Wikipedia rabbit hole: Skimming a page and clicking interesting hyperlinks to jump from topic to topic.</li>
+                </ul>
+                <hr class="guide-divider">
+
+                <!-- Chaotic -->
+                <h3 class="shape-title shape-chaotic">Chaotic</h3>
+                <p class="shape-subtitle">High Intensity, Low Rhythm, High Exploration, Very Low Coherence</p>
+                <p>Erratic, confused, or highly complex. The mouse movements are fast, all over the place, and lack a straight-line path.</p>
+                <ul class="shape-list">
+                    <li>Getting lost in a bad menu: Frantically moving the mouse in circles or zig-zags trying to figure out how to close a full-screen pop-up ad.</li>
+                    <li>Playing a browser game: Rapid, erratic clicking and dragging (e.g., an aim-trainer, a clicker game, or drawing in an interactive canvas).</li>
+                    <li>Panicked multitasking: Quickly darting the mouse between chat windows, emails, and work tools while trying to juggle multiple conversations.</li>
+                    <li>Comparing multiple items aggressively: Rapidly moving the cursor back and forth between two different product specification tables to compare them.</li>
+                    <li>Visual impairment or motor difficulty: A user struggling to accurately click small target zones, resulting in overshooting, correcting, and erratic tracking.</li>
+                </ul>
+                <hr class="guide-divider">
+
+                <!-- Flat -->
+                <h3 class="shape-title shape-flat">Flat</h3>
+                <p class="shape-subtitle">Very Low Intensity, Rhythm, and Exploration. Moderate Coherence</p>
+                <p>Minimal to zero physical interaction. The page is open, but the user's hands are off the controls.</p>
+                <ul class="shape-list">
+                    <li>Watching a YouTube video: The user clicks play, takes their hand off the mouse, and leans back to watch for 15 minutes.</li>
+                    <li>Going AFK (Away From Keyboard): The user gets up to go to the bathroom or grab a coffee while leaving the webpage open.</li>
+                    <li>Background tab listening: The user has a podcast or music playlist running on the site, but is actually working in a completely different window.</li>
+                    <li>Cooking with a recipe app: A tablet is open on the kitchen counter showing a recipe, but the user's hands are covered in flour so they aren't touching it.</li>
+                    <li>Deep thinking/Reading a complex chart: The user is staring intently at a dashboard or data visualization, absorbing the information without moving the mouse.</li>
+                </ul>
+                <hr class="guide-divider">
+
+                <!-- Ambient -->
+                <h3 class="shape-title shape-ambient">Ambient</h3>
+                <p>Ambient represents the natural connection of measurable shapes. It captures the neutral, transitional moments when a user is shifting gears. Because human behavior naturally fluctuates and rarely stays locked in one shape, the Ambient score acts as the baseline of everyday interaction. Every normal session will naturally carry a small Ambient score.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="ui.js"></script>
     <script src="app.js"></script>
 </body>
-</html>
+                        </html>
